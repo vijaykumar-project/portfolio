@@ -570,6 +570,8 @@ body {
   }
 
   .portfolio-card {
+    height: 300px;
+    width: 300px;
     padding: 60px 20px;  /* Reduced padding for smaller screen */
   }
 
