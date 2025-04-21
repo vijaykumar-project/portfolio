@@ -1,0 +1,1476 @@
+
+
+
+
+/*-----------------------------------*\
+  #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+/* Define global font sizes */
+:root {
+
+  /* === Modernized Color Palette (names unchanged) === */
+
+  --cadet-blue-crayola: #9BF6FF    ;
+  --gold-web-golden: hsl(45, 100%, 50%);
+  --vivid-sky-blue: hsl(200, 95%, 65%);
+  --midnight-blue: hsl(230, 35%, 18%);
+  --minion-yellow: hsl(48, 97%, 68%);
+  --independence: hsl(220, 15%, 30%);
+  --orange-soda: hsl(14, 100%, 60%);
+  --space-cadet: #20b2aa;
+  --fiery-rose: hsl(345, 80%, 60%);
+  --klein-blue: hsl(221, 85%, 45%);
+  --bluetiful: hsl(214, 90%, 60%);
+  --glaucous: hsl(220, 40%, 70%);
+  --manatee: hsl(220, 10%, 65%);
+  --rufous: hsl(3, 32%, 86%);
+  --black: hsl(0, 0%, 5%);
+  --white: hsl(0, 0%, 100%);
+
+  /* === Font Sizes (unchanged) === */
+  --fs-1: 2.5rem;
+  --fs-2: 2.2rem;
+  --fs-3: 1.8rem;
+  --fs-4: 1.6rem;
+  --fs-5: 1.4rem;
+  --fs-6: 1.2rem;
+
+  --fw-600: 600;
+  --fw-700: 700;
+
+  --radius-5: 5px;
+  --radius-10: 10px;
+  --radius-15: 15px;
+  --radius-20: 20px;
+
+  --section-padding: 40px;
+
+  --shadow: 0 5px 15px rgba(225, 61, 61, 0.1);
+
+  --transition-1: 0.2s ease;
+  --transition-2: 0.3s ease-in-out;
+  --cubic-out: cubic-bezier(0.33, 0.85, 0.56, 1.02);
+}
+
+
+
+
+
+
+/*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li { list-style: none; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a,
+img,
+span,
+input,
+strong,
+button,
+textarea,
+ion-icon { display: block; }
+
+img { height: auto; }
+
+ion-icon {
+  pointer-events: none;
+  color: var(--white);
+}
+
+button,
+input,
+textarea {
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+button { cursor: pointer; }
+
+input,
+textarea { width: 100%; }
+
+address { font-style: normal; }
+
+html {
+  font-size: 10px;
+  font-family: var(--ff-open-sans);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--space-cadet);
+  color: var(--cadet-blue-crayola);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+:focus-visible { outline-offset: 4px; }
+
+::-webkit-scrollbar { width: 15px; }
+
+::-webkit-scrollbar-track { background-color: hsl(0, 0%, 95%); }
+
+::-webkit-scrollbar-thumb { background-color: hsl(0, 0%, 80%); }
+
+::-webkit-scrollbar-thumb:hover { background-color: hsl(0, 0%, 70%); }
+
+
+
+
+
+/*-----------------------------------*\
+  #REUSED STYLE
+\*-----------------------------------*/
+
+/* Container Styling */
+.container {
+  padding-inline: 20px; /* Padding on the left and right */
+}
+
+/* Button Styles */
+.btn {
+  color: var(--white); /* White text color */
+  font-family: var(--ff-barlow); /* Font family for the button */
+  font-size: var(--fs-5); /* Font size for the button */
+  font-weight: var(--fw-600); /* Font weight for boldness */
+  max-width: max-content; /* Ensuring button width fits its content */
+  padding: var(--padding, 10px 40px); /* Customizable padding */
+  border-radius: 50px; /* Rounded corners for button */
+  transition: var(--transition-2); /* Smooth transition effect */
+}
+
+.btn-primary.blue {
+  background-color: var(--klein-blue); /* Primary button background */
+}
+
+/* Hover & Focus Effects for Button */
+.btn-primary.blue:is(:hover, :focus) {
+  background-color: var(--orange-soda); /* Background color on hover or focus */
+}
+
+/* Image Cover Styling */
+.img-cover {
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  object-fit: cover; /* Ensures image covers the area without distortion */
+}
+
+/* Section Padding */
+.section {
+  padding-block: var(--section-padding); /* Vertical padding for sections */
+}
+
+/* Section Subtitle */
+.section-subtitle {
+  color: var(--orange-soda); /* Subtitle text color */
+  font-family: var(--ff-barlow); /* Font family for subtitle */
+  font-size: var(--fs-4); /* Font size for subtitle */
+  text-align: center; /* Center-aligned text */
+}
+
+/* Header Styles */
+.h2, .h3 {
+  color: var(--white); /* White text for headings */
+  font-family: var(--ff-barlow); /* Font family for headings */
+  font-weight: var(--fw-600); /* Bold weight for headings */
+  line-height: 1.3; /* Line height for better readability */
+}
+
+.h2 {
+  font-size: var(--fs-2); /* Font size for h2 */
+}
+
+.h3 {
+  font-size: var(--fs-3); /* Font size for h3 */
+}
+
+/* Centered Section Text */
+.section-title, .section-text {
+  text-align: center; /* Center-aligning the titles and text */
+}
+
+
+
+
+/*-----------------------------------*\
+  #HEADER
+\*-----------------------------------*/
+
+/* Header styles */
+.header {
+  position: fixed;
+  padding-block: 15px;
+  width: 100%;
+  background-color: var(--space-cadet);
+  height: 65px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: height 0.25s var(--cubic-out);
+  z-index: 4;
+}
+
+.header.nav-active {
+  height: 335px; /* Expanded header height */
+  transition-duration: 0.35s;
+}
+
+.header > .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--white);
+  font-family: var(--ff-poppins);
+  font-size: 2.4rem;
+}
+
+/* Toggle button styling */
+.nav-toggle-btn {
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.nav-toggle-btn .close-icon,
+.nav-toggle-btn.active .menu-icon {
+  display: none;
+}
+
+.nav-toggle-btn.active .close-icon,
+.nav-toggle-btn .menu-icon {
+  display: block;
+}
+
+/* Navbar styling */
+.navbar {
+  position: absolute;
+  top: 65px; /* Adjust navbar to start below the header */
+  left: 0;
+  width: 100%;
+  padding-inline: 20px;
+  visibility: hidden; /* Hide navbar by default */
+  opacity: 0;
+  transition: visibility 0.2s ease, opacity 0.3s ease;
+}
+
+.header.nav-active .navbar {
+  visibility: visible; /* Show navbar when active */
+  opacity: 1; /* Fade in the navbar */
+}
+
+/* Navbar links styling */
+.navbar-link {
+  color: var(--white);
+  font-family: var(--ff-barlow);
+  padding-block: 3px;
+  transition: color 0.25s ease;
+}
+
+.navbar-link:is(:hover, :focus) {
+  color: var(--orange-soda); /* Change color on hover/focus */
+}
+
+/* Button inside navbar */
+.navbar .btn {
+  background-color: var(--orange-soda);
+  margin-block-start: 15px;
+}
+
+
+
+
+
+
+
+/*-----------------------------------*\
+  #HERO
+\*-----------------------------------*/
+
+/* Hide elements by default */
+.elem,
+.rotate-img { 
+  display: none; 
+}
+
+/* Hero Section */
+.hero {
+  background-image: url("../images/hero-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding-block: 100px var(--section-padding);
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+/* Hero Banner */
+.hero-banner {
+  width: 150px;
+  height: 172px;
+  background-color: var(--independence);
+  border-radius: var(--radius-10);
+  margin-inline: auto;
+  margin-block-end: 30px;
+}
+
+.hero-banner img { 
+  border-radius: inherit; 
+}
+
+/* Hero Content */
+.hero-content {
+  text-align: center;
+  color: var(--white);
+}
+
+/* Hero Title */
+.hero-title {
+  font-family: var(--ff-barlow);
+  font-size: var(--fs-5);
+  font-weight: var(--fw-600);
+  line-height: 1.3;
+  margin-block-end: 14px;
+}
+
+.hero-title strong {
+  font-size: var(--fs-1);
+  font-weight: inherit;
+  margin-block-end: 8px;
+}
+
+/* Hero Text */
+.hero-text { 
+  margin-block-end: 25px; 
+}
+
+/* Button Group */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+
+
+
+
+/*-----------------------------------*\
+  #ABOUT
+/* Hide elements initially */
+.abs-img,
+.abs-icon { 
+  display: none; 
+}
+
+/* About Section Styling */
+.about {
+  padding-block-start: 100px;  /* Adjusted padding for better spacing */
+  background-color: var(--space-cadet);  /* Updated background color for the section */
+  color: var(--white);  /* Ensures text is white */
+}
+
+/* About Banner */
+.about-banner {
+  background-color: var(--independence);  /* Background color for banner */
+  border-radius: var(--radius-15);  /* Slightly increased border-radius for more rounded corners */
+  margin-block-end: 40px;  /* Adjusted margin for better spacing */
+  overflow: hidden;  /* Prevents overflow */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  /* Added a subtle shadow for depth */
+}
+
+.about-banner > .img-cover { 
+  width: 100%;  /* Ensures the image covers the entire container */
+  height: 100%;  /* Ensures the image takes full height */
+  object-fit: cover;  /* Maintains aspect ratio */
+  border-radius: inherit;  /* Ensures the image inherits rounded corners */
+}
+
+/* Text Alignment and Spacing */
+.about :is(.section-title, .section-subtitle, .section-text) { 
+  text-align: left;  /* Aligning the text to the left for a more formal feel */
+}
+
+.about :is(.section-title, .section-text) { 
+  margin-block-end: 40px;  /* Increased bottom margin for better spacing */
+}
+
+/* About Section Titles and Subtitles */
+.about .section-title {
+  font-size: var(--fs-2);  /* Larger title size for emphasis */
+  font-weight: var(--fw-600);
+  line-height: 1.3;
+  color: var(--white);
+}
+
+.about .section-subtitle {
+  font-size: var(--fs-3);  /* Adjusted subtitle font size */
+  font-weight: var(--fw-600);
+  margin-block-end: 25px;  /* Added margin to separate subtitle from content */
+  color: var(--orange-soda);  /* Styled subtitle with a different color for contrast */
+}
+
+/* About Section Text */
+.about .section-text {
+  font-size: var(--fs-4);  /* Adjusted text size for better readability */
+  line-height: 1.6;
+  opacity: 0.8;  /* Slightly reduced opacity for a more modern and subtle feel */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  .about {
+    padding-block-start: 80px;  /* Reduced padding on smaller screens */
+  }
+
+  .about .section-title {
+    font-size: var(--fs-3);  /* Smaller title on mobile */
+  }
+
+  .about .section-text {
+    font-size: var(--fs-5);  /* Adjusted text size for readability on mobile */
+  }
+}
+
+
+
+/*-----------------------------------*\
+  #PORTFOLIO
+\*-----------------------------------*/
+
+/* Portfolio Section Title and Text */
+.portfolio .section-title { 
+  margin-block-end: 30px;  /* Increased margin for better spacing */
+  font-size: var(--fs-2);  /* Adjusted font size for emphasis */
+  font-weight: var(--fw-700);  /* Made title bold */
+  text-align: center;  /* Centered title for better visual balance */
+}
+
+.portfolio .section-text { 
+  margin-block-end: 60px;  /* Reduced bottom margin for better balance */
+  text-align: center;  /* Centered text for a clean look */
+  font-size: var(--fs-4);  /* Adjusted font size for better readability */
+  line-height: 1.6;  /* Improved line height for better spacing between lines */
+}
+
+/* Portfolio List - Grid Layout */
+.portfolio-list {
+  display: grid;
+  gap: 40px;  /* Reduced gap for tighter grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));  /* Responsive grid layout */
+  padding-inline: 10px;  /* Added padding to the sides for spacing */
+}
+
+/* Portfolio Card - Design */
+.portfolio-card {
+  width: 500px;
+  height: 500px;
+  background-color: var(--independence);
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center;
+  padding: 50px 20px;  /* Reduced padding for a more compact card */
+  border-radius: var(--radius-20);
+  font-family: var(--ff-barlow);
+  color: var(--white);
+  font-weight: var(--fw-600);
+  transition: var(--transition-2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);  /* Added shadow for depth */
+  position: relative;  /* Ensures the content is above the background */
+  overflow: hidden;  /* Prevents the content from overflowing */
+}
+
+/* Portfolio Card Content Adjustment */
+.portfolio-list > li:nth-child(even) .card-content { 
+  margin-inline-start: auto;  /* Aligns content to the right for even cards */
+}
+
+/* Portfolio Card Title and Subtitle */
+.portfolio-card .card-subtitle {
+  color: #0dd5b7;  /* Subtitle color updated for contrast */
+  margin-block-end: 10px;  /* Increased margin for better spacing */
+  font-size: var(--fs-5);  /* Adjusted subtitle font size */
+}
+
+.portfolio-card .card-title {
+  max-width: 90%;
+  margin-block-start: 100px;
+  font-size: var(--fs-4);
+  font-weight: var(--fw-700);
+  text-align: justify;
+  white-space: normal;
+  line-height: 1.5;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Shadow for visibility */
+}
+.portfolio-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+  z-index: 0; /* Make sure it's behind text */
+}
+
+.portfolio-card * {
+  position: relative;
+  z-index: 1; /* Bring content above overlay */
+}
+
+
+
+
+
+/* Portfolio Card Button Link */
+.portfolio-card .btn-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--fs-6);
+  text-transform: uppercase;
+  color: var(--white);  /* Button text color */
+  transition: var(--transition-2);
+}
+
+/* Portfolio Card Button Link Icon */
+.portfolio-card .btn-link ion-icon {
+  color: var(--orange-soda);
+  font-size: 1.8rem;  /* Increased icon size for better visibility */
+  transition: var(--transition-1);
+}
+
+/* Button Hover Effect */
+.portfolio-card .btn-link:hover ion-icon {
+  transform: translateX(4px);  /* Slight hover effect for icons */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .portfolio-list {
+    gap: 30px;  /* Reduced gap on smaller screens */
+  }
+
+  .portfolio-card {
+    padding: 60px 20px;  /* Reduced padding for smaller screen */
+  }
+
+  .portfolio-card .card-title {
+    font-size: var(--fs-4);  /* Reduced font size for better readability on mobile */
+  }
+
+  .portfolio-card .card-subtitle {
+    font-size: var(--fs-6);  /* Reduced subtitle font size on mobile */
+  }
+}
+
+
+
+
+
+
+/*-----------------------------------*\
+  #SKILLS
+\*-----------------------------------*/
+
+/* Skills Section Title and Text */
+.skills .section-title { 
+  margin-block-end: 25px;  /* Increased margin for better spacing */
+  font-size: var(--fs-2);  /* Larger font size for better prominence */
+  font-weight: var(--fw-700);  /* Bold title for emphasis */
+  text-align: center;  /* Centered title for balance */
+}
+
+.skills .section-text { 
+  margin-block-end: 50px;  /* Reduced margin for tighter spacing */
+  text-align: center;  /* Centered text for a neat layout */
+  font-size: var(--fs-4);  /* Adjusted font size for clarity */
+  line-height: 1.6;  /* Improved line height for better readability */
+}
+
+/* Skills List - Grid Layout */
+.skills-list {
+  display: grid;
+  gap: 40px;  /* Increased gap for clearer separation */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  /* Flexible grid for responsive layout */
+  padding-inline: 10px;  /* Padding for better alignment */
+}
+
+/* Skills Item - Wrapper Design */
+.skills-item .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-block-end: 15px;  /* Increased margin for better spacing */
+}
+
+/* Skills Title and Data */
+.skills-title,
+.skills-data {
+  color: var(--white);
+  font-size: var(--fs-5);
+  font-family: var(--ff-barlow);
+  font-weight: var(--fw-600);
+}
+
+/* Skills Progress Bar Container */
+.skills-progress-box {
+  background-color: var(--space-cadet);  /* Changed background for better contrast */
+  height: 10px;  /* Increased height for better visibility */
+  border-radius: var(--radius-10);  /* Rounded corners for smooth look */
+  width: 100%;  /* Full width container */
+  margin-top: 5px;  /* Added margin for better spacing */
+}
+
+/* Skills Progress Bar */
+.skills-progress {
+  background-color: var(--orange-soda);  /* Progress bar color */
+  height: 100%;  /* Full height of the container */
+  border-radius: inherit;  /* Matching rounded corners */
+  transition: width 0.3s ease-in-out;  /* Smooth transition effect */
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .skills-list {
+    gap: 25px;  /* Reduced gap on smaller screens */
+  }
+
+  .skills-item .wrapper {
+    flex-direction: column;  /* Stacked layout for smaller screens */
+    align-items: flex-start;  /* Align items to the start */
+  }
+
+  .skills-title,
+  .skills-data {
+    font-size: var(--fs-6);  /* Reduced font size for better mobile readability */
+  }
+
+  .skills-progress-box {
+    height: 8px;  /* Adjusted height for mobile screens */
+  }
+}
+
+
+
+/*-----------------------------------*\
+  #CONTACT
+\*-----------------------------------*/
+
+/* Contact Card */
+.contact-card {
+  background-color: var(--midnight-blue);
+  padding: 60px 30px;  /* Increased padding for better spacing */
+  border-radius: var(--radius-20);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);  /* Added subtle shadow for depth */
+}
+
+/* Card Subtitle */
+.contact-card .card-subtitle {
+  color: var(--orange-soda);
+  font-family: var(--ff-barlow);
+  font-size: var(--fs-3);  /* Slightly reduced size for better visual balance */
+  font-weight: var(--fw-600);
+  margin-bottom: 20px;  /* Spacing between subtitle and next content */
+}
+
+/* Contact Section Title */
+.contact .section-title {
+  text-align: left;
+  margin-block-end: 40px;  /* Increased margin for better section separation */
+  font-size: var(--fs-2);
+  font-weight: var(--fw-700);
+  color: var(--white);
+}
+
+/* Contact Form */
+.contact-form {
+  margin-block-end: 50px;
+}
+
+/* Input Fields */
+.contact-input {
+  background-color: var(--white);
+  color: var(--manatee);
+  border-radius: var(--radius-5);
+  padding: 15px 20px;
+  font-size: var(--fs-5);
+  margin-block-end: 20px;  /* Increased margin for better spacing between fields */
+  width: 100%;
+  border: 1px solid var(--space-cadet);  /* Border for better input visibility */
+  transition: border-color 0.3s ease;
+}
+
+/* Placeholder Text */
+.contact-input::placeholder {
+  color: var(--manatee);
+}
+
+/* Textarea Input */
+textarea.contact-input {
+  resize: vertical;
+  min-height: 120px;  /* Adjusted min-height for better text visibility */
+  max-height: 350px;  /* Allow for larger textarea */
+}
+
+/* Submit Button */
+.btn-submit {
+  background-color: var(--orange-soda);
+  color: var(--white);
+  font-family: var(--ff-barlow);
+  font-size: var(--fs-5);
+  width: 100%;
+  padding: 15px;
+  border-radius: var(--radius-5);
+  transition: var(--transition-2);
+  cursor: pointer;  /* Indicating it's clickable */
+  border: none;
+}
+
+.btn-submit:is(:hover, :focus) {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* Contact Item */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;  /* Increased gap for better visual balance */
+  margin-block-end: 25px;  /* Adjusted spacing between items */
+}
+
+.contact-item .contact-icon {
+  background-color: var(--glaucous);
+  font-size: 3rem;  /* Larger icons for better visibility */
+  padding: 25px;
+  border-radius: 50%;
+}
+
+.contact-item-title {
+  color: var(--white);
+  font-family: var(--ff-barlow);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+}
+
+/* Links in Contact Item */
+.contact-item-link {
+  color: var(--orange-soda);
+  transition: var(--transition-1);
+}
+
+.contact-item-link:is(:hover, :focus) {
+  color: var(--white);
+  text-decoration: underline;  /* Underline on hover/focus for emphasis */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .contact-card {
+    padding: 40px 20px;  /* Reduced padding on smaller screens */
+  }
+
+  .contact-form {
+    margin-block-end: 30px;
+  }
+
+  .contact-input {
+    font-size: var(--fs-6);  /* Smaller font size for mobile */
+    padding: 12px 15px;
+  }
+
+  .contact-item {
+    flex-direction: column;  /* Stack items vertically for mobile */
+    align-items: flex-start;  /* Align to the left */
+  }
+
+  .contact-icon {
+    font-size: 2rem;  /* Smaller icons for mobile */
+    padding: 15px;
+  }
+
+  .contact-item-title {
+    font-size: var(--fs-5);  /* Reduced font size for mobile */
+  }
+}
+
+
+
+/*-----------------------------------*\
+  #BLOG
+\*-----------------------------------*/
+
+/* Blog Section */
+.blog {
+  padding-block-end: 120px;
+}
+
+.blog .section-title {
+  margin-block-end: 30px;  /* Increased space between title and text */
+  font-size: var(--fs-2);
+  font-weight: var(--fw-700);
+  color: var(--white);
+}
+
+.blog .section-text {
+  margin-block-end: 70px;  /* Reduced bottom margin for better balance */
+  font-size: var(--fs-5);
+  color: var(--manatee);
+  line-height: 1.6;
+}
+
+/* Blog List */
+.blog-list {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));  /* Responsive grid layout */
+}
+
+/* Blog Card */
+.blog-card {
+  padding: 10%;
+  font-family: var(--ff-barlow);
+  background-color: var(--space-cadet);
+  border-radius: var(--radius-15);
+  overflow: hidden;
+  transition: var(--transition-2);
+}
+
+.blog-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);  /* Hover effect with box-shadow */
+}
+
+.blog-card .card-banner {
+  background-color: var(--independence);
+  border-radius: var(--radius-15);
+  overflow: hidden;
+  margin-block-end: 20px;
+}
+
+.blog-card .card-banner img {
+  transition: var(--transition-2);
+  width: 100%;  /* Ensuring image covers the entire banner */
+  object-fit: cover;
+}
+
+.blog-card .card-banner a:is(:hover, :focus) img {
+  transform: scale(1.1);  /* Zoom effect on hover/focus */
+  
+}
+
+/* Focus State for Card Banner */
+.blog-card .card-banner:focus-within {
+  outline: 2px solid var(--white);
+  outline-offset: 4px;
+}
+
+
+/* Card Tag */
+.blog-card .card-tag {
+  color: #9BF6FF ;
+  font-size: var(--fs-5);
+  margin-block-end: 10px;
+}
+
+/* Card Title */
+.blog-card .card-title {
+  color: var(--white);
+  font-size: var(--fs-4);
+  font-weight: var(--fw-600);
+  line-height: 1.3;
+  margin-block-end: 15px;  /* Space between title and text */
+}
+
+.blog-card .card-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-2);
+}
+
+.blog-card .card-title a:is(:hover, :focus) {
+  color: var(--orange-soda);
+  text-decoration: underline;  /* Underline on hover/focus */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .blog .section-title {
+    margin-block-end: 20px;  /* Adjust spacing for smaller screens */
+    font-size: var(--fs-3);
+  }
+
+  .blog-list {
+    gap: 30px;  /* Reduced gap for smaller screens */
+  }
+
+  .blog-card {
+    font-size: var(--fs-6);  /* Adjusted font size for mobile */
+  }
+}
+
+
+
+/*-----------------------------------*\
+  #FOOTER
+\*-----------------------------------*/
+
+/* Footer Section */
+.footer {
+  background-color: var(--independence);
+  padding-block: 60px;
+  text-align: center;  /* Centered text for a cleaner look */
+  color: var(--manatee);  /* Lighter text color for better contrast */
+}
+
+.copyright {
+  max-width: max-content;
+  margin-inline: auto;
+  margin-block-end: 20px;  /* Increased space for better alignment */
+  font-size: var(--fs-6);
+}
+
+.copyright-link {
+  display: inline-block;
+  transition: var(--transition-2);
+  font-weight: var(--fw-600);
+  color: var(--manatee);  /* Default color for link */
+  text-decoration: none;  /* Remove underline from link */
+}
+
+.copyright-link:is(:hover, :focus) {
+  color: var(--white);  /* Change color on hover/focus */
+}
+
+/* Footer List */
+.footer-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;  /* Increased space between links */
+  margin-inline: auto;
+  max-width: max-content;
+}
+
+.footer-list li {
+  display: inline-block;
+}
+
+.footer-list > li:not(:last-child) {
+  margin-inline-end: 40px;
+}
+
+/* Footer Link */
+.footer-link {
+  transition: var(--transition-2);
+  color: var(--manatee);
+  font-size: var(--fs-6);
+  text-decoration: none;  /* Remove underline */
+}
+
+.footer-link:is(:hover, :focus) {
+  color: var(--white);  /* Change color on hover/focus */
+  text-decoration: underline;  /* Add underline on hover/focus */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .footer {
+    padding-block: 40px;  /* Adjust padding for smaller screens */
+  }
+
+  .footer-list {
+    flex-direction: column;  /* Stack footer links vertically */
+    gap: 20px;  /* Reduced space between links */
+  }
+
+  .copyright {
+    margin-block-end: 15px;  /* Adjust spacing for smaller screens */
+    font-size: var(--fs-5);
+  }
+}
+
+
+
+/*-----------------------------------*\
+  #BACK TO TOP
+\*-----------------------------------*/
+
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  background-color: var(--orange-soda);
+  color: var(--white);
+  font-size: 3.0rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  transform: translateY(-5px);
+  background-color: var(--white);
+  color: var(--orange-soda);
+}
+
+.back-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    right: 15px;
+    bottom: 25px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.3rem;
+  }
+}
+
+
+
+
+
+
+/*-----------------------------------*\
+  #MEDIA QUERIES
+\*-----------------------------------*/
+
+/**
+ * responsive for larger than 600px screen
+ */
+
+@media (min-width: 600px) {
+  /* Portfolio: alternate alignment for even cards */
+  .portfolio-list li:nth-child(even) .card-content {
+    margin-inline-start: auto;
+    text-align: right;
+    max-width: 60%;
+  }
+
+  .portfolio-list li:nth-child(odd) .card-content {
+    max-width: 60%;
+  }
+}
+
+
+
+
+
+
+/**
+ * responsive for larger than 768px screen
+ */
+
+@media (min-width: 768px) {
+
+  /**
+   * PORTFOLIO
+   */
+
+  .portfolio-card {
+    background-size: 115%;
+    padding-inline: 80px;
+  }
+
+  .portfolio-card:is(:hover, :focus) { background-size: 130%; }
+
+
+
+  /**
+   * SKILLS, BLOG
+   */
+
+  .skills-list,
+  .blog-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 50px;
+  }
+
+}
+
+
+
+
+
+/**
+ * responsive for larger than 992px screen
+ */
+
+@media (min-width: 992px) {
+
+  /**
+   * CUSTOM PROPERTY
+   */
+
+  :root {
+
+    /**
+     * typography
+     */
+
+    --fs-1: 6.4rem;
+    --fs-2: 3.5rem;
+    --fs-3: 3.6rem;
+
+    /**
+     * spacing
+     */
+
+    --section-padding: 80px;
+
+  }
+
+
+
+  /**
+   * REUSED STYLE
+   */
+
+  .container {
+    max-width: 1050px;
+    margin-inline: auto;
+  }
+
+
+
+  /**
+   * HEADER
+   */
+
+  .nav-toggle-btn { display: none; }
+
+  .header,
+  .header.nav-active {
+    background-color: transparent;
+    box-shadow: none;
+    height: unset;
+    padding-block: 30px;
+  }
+
+  .header.active {
+    background-color: var(--space-cadet);
+    box-shadow: var(--shadow);
+    padding-block: 20px;
+  }
+
+  .navbar { all: unset; }
+
+  .navbar-list {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .navbar .btn {
+    margin-block-start: 0;
+    --padding: 7px 30px;
+  }
+
+
+
+  /**
+   * HERO
+   */
+
+  .hero .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .hero-content { text-align: left; }
+
+  .btn-group { justify-content: flex-start; }
+
+  .hero-title span { font-size: 3rem; }
+
+  .hero-title {
+    --fs-5: 2.2rem;
+    margin-block-end: 25px;
+  }
+
+  .hero-text {
+    margin-block-end: 25px;
+    font-size: var(--fs-5);
+  }
+
+  .hero-banner {
+    position: relative;
+    margin-block-end: 0;
+    order: 1;
+    width: 340px;
+    height: 390px;
+    margin-inline: 0;
+    margin-inline-start: auto;
+  }
+
+  .elem {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--white);
+    border-radius: var(--radius-10);
+    padding: 20px;
+  }
+
+  .elem-1 {
+    top: 20px;
+    left: -130px;
+  }
+
+  .elem-1 .elem-title { color: var(--vivid-sky-blue); }
+
+  .elem-2 {
+    bottom: 30px;
+    right: -80px;
+  }
+
+  .elem-2 .elem-title { color: var(--fiery-rose); }
+
+  .elem-title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+  }
+
+  .elem-text {
+    max-width: 10ch;
+    color: var(--black);
+    font-weight: var(--fw-700);
+    line-height: 1.1;
+  }
+
+  .elem-3 {
+    top: -40px;
+    right: -30px;
+  }
+
+  .elem-3 ion-icon {
+    color: var(--minion-yellow);
+    font-size: 6rem;
+  }
+
+  .rotate-img {
+    display: block;
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 120px;
+    animation: rotate360 15s linear infinite reverse;
+  }
+
+  @keyframes rotate360 {
+    0% { transform: rotate(0); }
+    100% { transform: rotate(1turn); }
+  }
+
+
+
+  /**
+   * ABOUT
+   */
+
+  .about { padding-block: 180px; }
+
+  .about .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 80px;
+  }
+
+  .about-banner {
+    position: relative;
+    margin-block-end: 0;
+  }
+
+  .abs-img,
+  .abs-icon {
+    display: block;
+    position: absolute;
+  }
+
+  .abs-img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: inherit;
+    bottom: -150px;
+    left: -100px;
+  }
+
+  .abs-icon {
+    font-size: 5rem;
+    padding: 20px;
+    border-radius: inherit;
+  }
+
+  .abs-icon-1 {
+    top: 50px;
+    left: -120px;
+    background-color: var(--bluetiful);
+  }
+
+  .abs-icon-2 {
+    top: -40px;
+    right: -40px;
+    background-color: var(--gold-web-golden);
+  }
+
+  .abs-icon-3 {
+    bottom: -40px;
+    left: 250px;
+    background-color: var(--rufous);
+  }
+
+
+
+  /**
+   * PORTFOLIO
+   */
+
+  .portfolio-card .card-subtitle { font-size: var(--fs-5); }
+
+  .portfolio-card .btn-link { --fs-6: 1.6rem; }
+
+
+
+  /**
+   * SKILLS
+   */
+
+  .skills-list { column-gap: 100px; }
+
+
+
+  /**
+   * CONTACT
+   */
+
+  .contact-card { padding: 100px; }
+
+  .contact .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .contact-form { margin-block-end: 0; }
+
+  .contact-item { gap: 25px; }
+
+  .contact-icon { padding: 30px; }
+
+
+
+  /**
+   * BLOG
+   */
+
+  .blog { padding-block-end: 180px; }
+
+  .blog-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+  }
+
+  
+
+  /**
+   * FOOTER
+   */
+
+  .footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .copyright,
+  .footer-list { margin-inline: 0; }
+
+}
+/* Modal Background */
+.modal {
+  display:none;
+  position: fixed;
+  z-index:1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+
+  
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  position: relative;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+}
+
+/* Close Button */
+.close-btn {
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+.close-privacy{
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+}
+.close-privacy:hover {
+  color: red;
+}

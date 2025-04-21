@@ -1,0 +1,69 @@
+*{
+    margin: auto;
+    height: auto;
+    width: auto;
+    box-sizing: border-box;
+}
+.outer{
+    background:gray;
+    height: 100%;;
+    width: 100%;
+}
+ .inner{
+    padding: 2%;
+    border: 1px solid gainsboro;
+    background-color: white;
+    height: 110% ;
+    width: 50%;
+ }
+ 
+#resume_download {
+    /* margin-top: 70%; */
+    margin-left: 80%;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+  }
+  
+  #resume_download:hover {
+    background-color: #0056b3;
+  }
+  
+  .download-section {
+    text-align: center;
+    /* margin-top: 20px; */
+  }
+  
+  #floatingBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px 18px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: background-color 0.3s;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s ease;
+  }
+  
+  #floatingBtn:hover {
+    background-color: #0056b3;
+  }
+  
